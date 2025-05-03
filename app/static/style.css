@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+body{
+    background-color: #FFFAFA;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+}
+  
+.title{
+    font-size: 5em;
+}
+  
+label{
+    font-size: 1.5em;
+}
+  
+.box{
+    border:1px solid #000;
+    padding:10px 20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    border-radius:10px;
+    background:#fff;
+    font-size: 0.8em;
+}
+
+.box label{
+    font-size:3em;
+    margin-bottom:10px;
+    text-align:center;
+}
+
+  
+input[type="file"]::file-selector-button{
+    background:#4554e2;
+    color:#fff;
+    border:0;
+    padding:8px 18px;
+    border-radius:4px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+
+input[type="file"]::file-selector-button:hover{
+    background:#2d01a8;
+}
+
+input[type="file"]{
+    color:#000;
+    font-size:1rem;
+    font-family:Arial, sans-serif;
+}
+.upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+  
+.info{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 3px;
+    color: rgb(172, 172, 172);
+    font-style: italic;
+    font-size: 0.8em;
+    display: flex;
+    gap: 10px;
+}
+  
+.info a{
+    color: rgb(172, 172, 172);
+    text-decoration: underline;
+    font-style: italic;
+}
