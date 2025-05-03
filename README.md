@@ -1,2 +1,2 @@
-# GlideLog
-Simple python app for tracking and managing your glider flights
+# IGC Lookup
+Simple website made in python to analyze your glider flights!
