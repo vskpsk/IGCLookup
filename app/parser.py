@@ -1,5 +1,19 @@
+import json
+
+def convert_gps(gps):
+    direction = gps[-1]
+    sign = -1 if direction in ['S', 'W'] else 1
+    gps_str = gps[:-1]
+
+    degrees = int(gps[:-6])
+    minutes = int(gps[-6:-4])
+    seconds = int(gps[-4:-2])
+    seconds += int(gps[-2]) * 0.1
+
+    decimal = degrees + minutes / 60 + seconds / 3600
+    return round(sign * decimal, 6)
+
 def parse(igc_file):
-    print(f"Parsování souboru: {igc_file}")
     data = {"heads": {}, "flight": {}}
     with open(igc_file, 'r') as file:
         for line in file:
@@ -23,11 +37,10 @@ def parse(igc_file):
                 alt = line[25:30]
                 gnss = line[30:35]
                 
-                data["flight"][time] = {"lat": lat, "lon": lon, "fix": fix, "alt": alt, "gnss": gnss}
-                
+                data["flight"][time] = {"lat": convert_gps(lat),"lon": convert_gps(lon), "fix": fix, "alt": alt, "gnss": gnss}
+            
+    print(data)            
     return data
 
 def parse_v2(igc_file):
-    print(">>> parse_v2 se spustil s:", igc_file)
     return parse(igc_file)
-

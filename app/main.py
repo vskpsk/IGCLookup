@@ -19,7 +19,6 @@ heads_list = {
     "HFFTY": "Tow type",
     "HFFID": "Tow registration",
     "HFGPS": "GPS Device"
-    
 }
 
 @route("/")
@@ -55,6 +54,8 @@ def upload():
     date_idk = datetime.strptime(parsed["heads"]["Date"], "%m%d%y")
     date_parsed = date_idk.strftime("%d/%m/%Y")
     parsed["heads"]["Date"] = date_idk.strftime("%d/%m/%Y")
-    return template("main", heads=parsed["heads"], flight=json.dumps(parsed["flight"]))
+    
+    first_point = next(iter(parsed["flight"].values()))
+    return template("main", heads=parsed["heads"], flight=parsed["flight"], first={"lat": first_point["lat"], "lon": first_point["lon"]})
 
 run(host='192.168.0.45', port=8081, debug=True, reloader=True)
